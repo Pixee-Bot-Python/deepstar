@@ -127,7 +127,7 @@ class TransformSetCommandLineRouteHandler(CommandLineRouteHandler):
 
         plugin().transform_set_select_curate(transform_set_id, opts)
 
-    def select_export_dir(self, transform_set_ids, target_dir, opts={}):
+    def select_export_dir(self, transform_set_ids, target_dir, opts=None):
         """
         This method exports transform sets to a directory.
 
@@ -138,6 +138,7 @@ class TransformSetCommandLineRouteHandler(CommandLineRouteHandler):
         :raises: CommandLineRouteHandlerError
         :rtype: None
         """
+        opts = {} if opts is None else opts
 
         transform_set_model = TransformSetModel()
 

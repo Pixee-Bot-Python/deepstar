@@ -201,7 +201,7 @@ class FrameSetCommandLineRouteHandler(CommandLineRouteHandler):
 
         debug(f'frame_set_id={frame_set_id}, fk_videos={video_id}', 3)
 
-    def select_export_dir(self, frame_set_ids, target_dir, opts={}):
+    def select_export_dir(self, frame_set_ids, target_dir, opts=None):
         """
         This method exports frame sets to a directory.
 
@@ -211,6 +211,7 @@ class FrameSetCommandLineRouteHandler(CommandLineRouteHandler):
         :raises: CommandLineRouteHandlerError
         :rtype: None
         """
+        opts = {} if opts is None else opts
 
         frame_set_model = FrameSetModel()
 

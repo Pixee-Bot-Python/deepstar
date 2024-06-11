@@ -46,7 +46,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
 
         return str(uuid.uuid4())
 
-    def insert_file(self, path, opts={}):
+    def insert_file(self, path, opts=None):
         """
         This method inserts a local video into the video colletion.
 
@@ -55,6 +55,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
         :raises: CommandLineRouteHandlerError
         :rtype: None
         """
+        opts = {} if opts is None else opts
 
         if not os.path.isfile(path):
             raise CommandLineRouteHandlerError(
@@ -176,7 +177,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
         debug(f'video_id={video_id}, uri={url}, filename={filename}, '
               f'description={desc}', 3)
 
-    def insert_youtube(self, path, opts={}):
+    def insert_youtube(self, path, opts=None):
         """
         This method determines the action to take on the path. If the path is a
         path to a file, it will parase the file expecting it to contain URLs to
@@ -188,6 +189,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
         :param dict opts: The optional dict of options.
         :rtype: None
         """
+        opts = {} if opts is None else opts
 
         urls = []
         descs = []
@@ -310,7 +312,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
         debug(f'video_id={video_id}, uri={url}, filename={filename}, '
               f'description={desc}', 3)
 
-    def insert_vimeo(self, path, opts={}):
+    def insert_vimeo(self, path, opts=None):
         """
         This method determines the action to take on the path. If the path is a
         path to a file, it will parase the file expecting it to contain URLs to
@@ -322,6 +324,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
         :param dict opts: The optional dict of options.
         :rtype: None
         """
+        opts = {} if opts is None else opts
 
         urls = []
         descs = []
@@ -381,7 +384,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
         for r in result:
             debug(f'{r[0]} | {r[1]} | {r[2]} | {r[3]}', 3)
 
-    def select_extract(self, video_ids, opts={}):
+    def select_extract(self, video_ids, opts=None):
         """
         This method extracts frames and thumbnails from a video to a frame set.
 
@@ -390,6 +393,7 @@ class VideoCommandLineRouteHandler(CommandLineRouteHandler):
         :raises: CommandLineRouteHandlerError
         :rtype: None
         """
+        opts = {} if opts is None else opts
 
         video_model = VideoModel()
 

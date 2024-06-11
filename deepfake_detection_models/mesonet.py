@@ -58,11 +58,13 @@ class LRStepScheduler(Callback):
         self.cur_lr = max_lr
         self.history = {}
     
-    def on_train_begin(self, logs={}):
+    def on_train_begin(self, logs=None):
+        logs = {} if logs is None else logs
         logs = logs or {}
         K.set_value(self.model.optimizer.lr, self.max_lr)
 
-    def on_batch_end(self, batch, logs={}):
+    def on_batch_end(self, batch, logs=None):
+        logs = {} if logs is None else logs
         logs = logs or {}
         self.history.setdefault('lr', []).append(K.get_value(self.model.optimizer.lr))
 
